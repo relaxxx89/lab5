@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Таблица студентов</title>
+    <link rel="stylesheet" href="table.css">
+</head>
+<body>
+    <h1>Таблица студентов</h1>
+    
+    <div class="header">
+        <a href="index.html">Основная страница</a>
+        <a href="page2.html">Позиционирование элементов</a>
+        <a href="table.html">Таблица</a>
+    </div>
+
+    <table>
+        <caption>Список студентов</caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ФИО</th>
+                <th>Номер зачётной книжки</th>
+                <th>Номер группы</th>
+                <th>Пол</th>
+                <th>Возраст</th>
+                <th>Форма поступления</th>
+                <th>Направление</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Иван Иванов</td>
+                <td>12345</td>
+                <td>6666-090301D</td>
+                <td>М</td>
+                <td>20</td>
+                <td>Очная</td>
+                <td>ИВТ</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Анна Петрова</td>
+                <td>54321</td>
+                <td>6666-090301D</td>
+                <td>Ж</td>
+                <td>19</td>
+                <td>Очная</td>
+                <td>ИВТ</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Настя Петрова</td>
+                <td>12312</td>
+                <td>6666-090301D</td>
+                <td>Ж</td>
+                <td>19</td>
+                <td>Очная</td>
+                <td>ИВТ</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Данила Душилов</td>
+                <td>45123</td>
+                <td>6666-090301D</td>
+                <td>М</td>
+                <td>20</td>
+                <td>Очная</td>
+                <td>ИВТ</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Rick Owens</td>
+                <td>44322</td>
+                <td>6666-090301D</td>
+                <td>М</td>
+                <td>61</td>
+                <td>Очная</td>
+                <td>ИВТ</td>
+            </tr>
+        </tbody>
+    </table>
+    <form id="studentForm" onsubmit="event.preventDefault(); addStudent();">
+        <h2>Добавить студента</h2>
+        <label>№: <input type="number" id="id" required></label><br>
+        <label>ФИО: <input type="text" id="name" required></label><br>
+        <label>Номер зачётной книжки: <input type="text" id="bookNumber" required></label><br>
+        <label>Номер группы: <input type="text" id="groupNumber" required></label><br>
+        <label>Пол: <input type="text" id="gender" required></label><br>
+        <label>Возраст: <input type="number" id="age" required></label><br>
+        <label>Форма поступления: <input type="text" id="admissionForm" required></label><br>
+        <label>Направление: <input type="text" id="direction" required></label><br>
+        <button type="submit">Добавить</button>
+    </form>
+
+    <script>
+        function addStudent() {
+            const table = document.querySelector("table tbody");
+            const newRow = document.createElement("tr");
+
+            const fields = ["id", "name", "bookNumber", "groupNumber", "gender", "age", "admissionForm", "direction"];
+            fields.forEach(field => {
+                const td = document.createElement("td");
+                td.textContent = document.getElementById(field).value;
+                newRow.appendChild(td);
+            });
+
+            table.appendChild(newRow);
+
+            document.getElementById("studentForm").reset();
+        }
+    </script>
+
+</body>
+</html>
